@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
 
-using FileHasher;
-
-
 namespace FileHasher
 {
     class Hasher
@@ -19,19 +16,19 @@ namespace FileHasher
             string filename = "";
             string mode = "";
 
-            for (int i = 0; i < args.Length; i++)
+            for (int i = 0; i < args.Length; i += 2)
             {
-                if (args[i] == "-f" && i + 1 < args.Length)
+                if (args[i] == "-f")
                 {
                     filename = args[i + 1];
                 }
-                else if (args[i] == "-m" && i + 1 < args.Length)
+                else if (args[i] == "-m")
                 {
                     mode = args[i + 1];
                 }
             }
 
-            if (filename == null || mode == null)
+            if (string.IsNullOrEmpty(filename) || string.IsNullOrEmpty(mode))
             {
                 Console.WriteLine("Ошибка: Необходимо указать имя файла и режим.");
                 PrintHelp();
@@ -70,38 +67,27 @@ namespace FileHasher
         {
             using (var stream = File.OpenRead(filename))
             {
-                var crc32 = new Crc32();
-                var hash = crc32.ComputeHash(stream);
-                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                var crc32Calculator = new CRC32Calculator();
+                var hash = crc32Calculator.ComputeHash(stream);
+                return hash.ToString("X").ToLower();
             }
         }
 
-        static long CalculateSum32(string filename)
+        static uint CalculateSum32(string filename)
         {
             using (var stream = File.OpenRead(filename))
             {
-                long sum = 0;
-                int bytesRead;
-                byte[] buffer = new byte[4];
-
-                while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    for (int i = 0; i < bytesRead; i += 4)
-                    {
-                        sum += BitConverter.ToInt32(buffer, i);
-                    }
-                }
-
-                return sum;
+                var sum32Calculator = new Sum32Calculator();
+                return sum32Calculator.ComputeHash(stream);
             }
         }
 
         static void PrintHelp()
         {
             Console.WriteLine("Аргументы программы:");
-            Console.WriteLine("./hasher -h");
-            Console.WriteLine("./hasher -f <filename> -m <mode>");
-            Console.WriteLine("./hasher -m <mode> -f <filename>");
+            Console.WriteLine("./Hasher.exe -h");
+            Console.WriteLine("./Hasher.exe -f <filename> -m <mode>");
+            Console.WriteLine("./Hasher.exe -m <mode> -f <filename>");
             Console.WriteLine("Где <mode> может принимать значения из {crc32, sum32}");
         }
     }
