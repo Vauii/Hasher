@@ -1,11 +1,8 @@
-﻿using System;
-using System.IO;
-
-namespace FileHasher
+﻿namespace FileHasher
 {
-    class Hasher
+    public class Hasher
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             if (args.Length == 0 || args[0] == "-h")
             {
@@ -26,13 +23,12 @@ namespace FileHasher
                 {
                     mode = args[i + 1];
                 }
-            }
-
-            if (string.IsNullOrEmpty(filename) || string.IsNullOrEmpty(mode))
-            {
-                Console.WriteLine("Ошибка: Необходимо указать имя файла и режим.");
-                PrintHelp();
-                return;
+                else
+                {
+                    Console.WriteLine("Ошибка: Неверные аргументы программы.");
+                    PrintHelp();
+                    return;
+                }
             }
 
             if (!File.Exists(filename))
@@ -63,7 +59,7 @@ namespace FileHasher
             }
         }
 
-        static string CalculateCRC32(string filename)
+        public static string CalculateCRC32(string filename)
         {
             using (var stream = File.OpenRead(filename))
             {
@@ -73,7 +69,7 @@ namespace FileHasher
             }
         }
 
-        static uint CalculateSum32(string filename)
+        public static uint CalculateSum32(string filename)
         {
             using (var stream = File.OpenRead(filename))
             {

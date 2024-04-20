@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher", "Hasher\Hasher.csproj", "{D9B5CEEA-5AED-477F-B80C-A5DA16C7405D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hasher", "Hasher\Hasher.csproj", "{D9B5CEEA-5AED-477F-B80C-A5DA16C7405D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher.Tests", "Hasher.Tests\Hasher.Tests.csproj", "{A78FAD42-F4F5-48F7-A30E-EB1EEC87D78D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HasherTests", "Hasher.Tests\HasherTests.csproj", "{38E0C36C-F472-4E1C-B87B-032E9CE84E4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D9B5CEEA-5AED-477F-B80C-A5DA16C7405D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9B5CEEA-5AED-477F-B80C-A5DA16C7405D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9B5CEEA-5AED-477F-B80C-A5DA16C7405D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A78FAD42-F4F5-48F7-A30E-EB1EEC87D78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A78FAD42-F4F5-48F7-A30E-EB1EEC87D78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A78FAD42-F4F5-48F7-A30E-EB1EEC87D78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A78FAD42-F4F5-48F7-A30E-EB1EEC87D78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E0C36C-F472-4E1C-B87B-032E9CE84E4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E0C36C-F472-4E1C-B87B-032E9CE84E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E0C36C-F472-4E1C-B87B-032E9CE84E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E0C36C-F472-4E1C-B87B-032E9CE84E4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
